@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose')
+const routes = require('./routes');
 
-app.get('/', (request, response) => {
-    return response.send({ message: 'Hello World!'})
+mongoose.connect('mongodb+srv://omnistack:omnistack@weekomnistackrocketseat-eof13.mongodb.net/test?retryWrites=true&w=majority', {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
 })
 
+app.use(express.json())
+app.use(routes)
 app.listen(3333);
